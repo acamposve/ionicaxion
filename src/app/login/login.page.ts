@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router'; // Importa Router
 import { ApiService } from '../services/api.service';
-import { AlertController } from '@ionic/angular';
+import { ToastController } from '@ionic/angular'; // Importa ToastController
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,11 @@ export class LoginPage {
   phoneNumber: string = "";
   password: string = "";
 
-  constructor(private apiService: ApiService, private alertController: AlertController) {}
+  constructor(
+    private apiService: ApiService,
+    private router: Router, // Inyecta Router
+    private toastController: ToastController // Inyecta ToastController
+  ) {}
 
   async login() {
     const loginData = {
@@ -19,32 +24,24 @@ export class LoginPage {
       password: this.password
     };
 
-    this.apiService.login(loginData).subscribe({
-      next: async (response) => {
-        if (response === 'Login successful.') {
-          // Navegar al dashboard o página principal
-          console.log('Login exitoso');
-          // Aquí puedes redirigir a otra página, por ejemplo:
-          // this.router.navigate(['/dashboard']);
-        } else if (response === 'Invalid credentials.') {
-          await this.showAlert('Credenciales inválidas');
-        } else {
-          await this.showAlert('Respuesta inesperada: ' + response);
-        }
-      },
-      error: async (err) => {
-        console.error('Error en el login:', err);
-        await this.showAlert('Ocurrió un error. Inténtalo de nuevo más tarde.');
+
+    console.log('LoginData from API:', loginData); // <-- Agregado aquí
+
+    console.log('Login Data:', JSON.stringify(loginData));
+    this.apiService.login(loginData).subscribe(async response => {
+
+      console.log('Response from API:', response); // <-- Agregado aquí
+      if (response === 'Login successful.') { // Ajusta según tu respuesta
+        this.router.navigate(['/home']); // Navega a la página home
+      } else {
+        // Muestra un toast con el error
+        const toast = await this.toastController.create({
+          message: response, // Usa el mensaje de error
+          duration: 2000,
+          color: 'danger' // Color del toast
+        });
+        toast.present();
       }
     });
-  }
-
-  async showAlert(message: string) {
-    const alert = await this.alertController.create({
-      header: 'Información',
-      message: message,
-      buttons: ['OK'],
-    });
-    await alert.present();
   }
 }
