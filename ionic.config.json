@@ -1,0 +1,7 @@
+{
+  "name": "ionicaxion",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
