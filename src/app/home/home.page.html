@@ -16,38 +16,11 @@
 
 <ion-content>
   <hr />
-  <h1>Hola, Cliente</h1>
+  <h1>Hola, {{ fullName }}</h1>
 
-Categorias
+  <app-category-section></app-category-section>
 
-  <ion-grid>
-    <ion-row>
-      <ion-col>
-        <h2>Categorías</h2>
-      </ion-col>
-      <ion-col>
-        <ion-button >Ver Más</ion-button>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <!-- Imágenes aleatorias de productos aquí -->
-    </ion-row>
-  </ion-grid>
-
-  <h2>Destacados</h2>
-  <ion-grid>
-    <ion-row>
-      <ion-col>
-        <!-- Producto destacado 1 -->
-      </ion-col>
-      <ion-col>
-        <!-- Producto destacado 2 -->
-      </ion-col>
-      <ion-col>
-        <!-- Producto destacado 3 -->
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+  <app-featured-products></app-featured-products>
 </ion-content>
 
 <ion-footer>

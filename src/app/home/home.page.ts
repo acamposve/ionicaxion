@@ -6,7 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
+  fullName: string;
+  constructor() {
 
-  constructor() {}
+    this.fullName = localStorage.getItem('fullName') || '';
+ 
+  }
 
 }

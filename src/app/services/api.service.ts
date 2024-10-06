@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { LoginResponse } from '../models/login-response.model'; // Asegúrate de que la ruta sea correcta
 
 @Injectable({
   providedIn: 'root'
@@ -19,9 +20,7 @@ export class ApiService {
     return this.http.get(`${this.apiUrl}/productos`);
   }
 
-  login(loginData: { phoneNumber: string; password: string }): Observable<string> {
-    return this.http.post<string>(`${this.apiUrl}/Auth/login`, loginData, {
-      responseType: 'text' as 'json' // Asegúrate de que la respuesta sea tratada como texto
-    });
+  login(loginData: { phoneNumber: string; password: string }): Observable<LoginResponse> {
+    return this.http.post<LoginResponse>(`${this.apiUrl}/Auth/login`, loginData);
   }
 }
