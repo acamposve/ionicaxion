@@ -1,0 +1,85 @@
+/* src/app/login/login.page.scss */
+.login-page {
+    --background: #D1117E;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #ffffff;
+  }
+  
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Ocupa toda la altura de la pantalla */
+  }
+  
+  .header {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  .logo {
+    width: 100px;
+    height: auto;
+    margin-bottom: 10px;
+  }
+  
+  h1, h2 {
+    margin: 0;
+  }
+  
+  .welcome-message h3 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 20px 0;
+  }
+  
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    max-width: 300px;
+  }
+  
+  ion-item {
+    width: 100%;
+    background-color: #ffffff; /* Fondo blanco para el ion-item */
+    border: 1px solid #D1117E; /* Bordes opcionales en color #D1117E */
+    margin: 10px 0;
+    border-radius: 5px; /* Bordes redondeados */
+  }
+  
+  ion-input {
+    color: #000000; /* Color de texto negro */
+  }
+  
+  .forgot-password {
+    margin-top: 10px;
+    color: #ffffff;
+  }
+  
+  ion-button {
+    width: 100%;
+    margin: 10px 0;
+  }
+  
+  .register-button {
+    --background: #D1117E;
+    --color: #ffffff;
+  }
+  
+  .footer {
+    margin-top: 20px;
+    font-size: 0.8rem;
+  }
+  
+  .william-logo {
+    width: 50px;
+    height: auto;
+    vertical-align: middle;
+  }
+  

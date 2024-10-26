@@ -1,0 +1,45 @@
+<!-- src/app/login/login.page.html -->
+<ion-content class="login-page">
+  <div class="container">
+    <!-- Logo y título -->
+    <div class="header">
+      <img src="assets/logo-axion.png" alt="Logo Axion" class="logo">
+      <h1>Santa Lucia</h1>
+      <h2>Axion Shop</h2>
+    </div>
+
+    <!-- Mensaje de bienvenida -->
+    <div class="welcome-message">
+      <h3>Bienvenido</h3>
+    </div>
+
+    <!-- Contenedor de formulario -->
+    <div class="form-container">
+      <ion-item>
+        <ion-label position="floating">Teléfono</ion-label>
+        <ion-input type="tel" [(ngModel)]="phoneNumber"></ion-input>
+      </ion-item>
+      
+      <ion-item>
+        <ion-label position="floating">Contraseña</ion-label>
+        <ion-input type="password" [(ngModel)]="password"></ion-input>
+      </ion-item>
+
+      <!-- Link para recuperar contraseña -->
+      <div class="forgot-password">
+        <ion-text color="medium">
+          <a href="#">¿Olvidaste tu contraseña?</a>
+        </ion-text>
+      </div>
+
+      <!-- Botones de ingreso y registro -->
+      <ion-button expand="block" color="dark" (click)="login()">Entrar</ion-button>
+      <ion-button expand="block" color="primary" class="register-button">Regístrate</ion-button>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <p>Powered By <img src="assets/logo_william.png" alt="Logo William" class="william-logo"></p>
+    </div>
+  </div>
+</ion-content>
