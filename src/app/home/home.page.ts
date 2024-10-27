@@ -41,9 +41,7 @@ export class HomePage implements OnInit {
   goToCart() {
     this.navCtrl.navigateForward('/cart');
   }
-  getImageUrl(imagePath: string): string {
-    return `${this.baseUrl}${imagePath}`;
-  }
+
   viewMoreCategories() {
     this.navCtrl.navigateForward('/categories');
   }

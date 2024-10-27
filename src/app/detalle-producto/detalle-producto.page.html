@@ -1,13 +1,30 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>detalle-producto</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">detalle-producto</ion-title>
-    </ion-toolbar>
-  </ion-header>
+
+
+
+  <ion-grid *ngIf="producto">
+    <ion-row>
+      <ion-col><img [src]="getImageUrl(producto.image)" alt="{{ producto.name }}" style="width: 75px; height: 75px;" /></ion-col>
+
+      
+    </ion-row>
+  
+    <ion-row>
+      <ion-col>{{ producto.name }}</ion-col>
+
+      
+    </ion-row>
+    <ion-row>
+      <ion-col>{{ producto.description }}</ion-col>
+
+      
+    </ion-row>
+    <ion-row>
+      <ion-col>{{ producto.price }}</ion-col>
+
+      
+    </ion-row>
+  </ion-grid>
+  <p *ngIf="!producto">Cargando...</p>
 </ion-content>
