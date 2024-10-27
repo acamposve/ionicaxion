@@ -29,6 +29,13 @@ export class LoginPage {
     toast.present();
   }
 
+
+
+  navigateToRegister() {
+    this.router.navigate(['/register']); // Navega a la página de registro
+  }
+
+
   login() {
     const loginRequest: LoginRequest = {
       PhoneNumber: this.phoneNumber,
@@ -39,6 +46,9 @@ export class LoginPage {
       response => {
         console.log('Login successful:', response);
         this.presentToast('Login exitoso', 'success');
+
+        const userName = response.fullName; // Obtener el nombre del usuario
+        this.authService.setUserName(userName); 
         this.router.navigate(['/home']);
       },
       error => {

@@ -1,20 +1,63 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+<ion-content padding>
+
+  <ion-buttons slot="start">
+    <ion-button (click)="openMenu()">
+      <ion-icon name="menu"></ion-icon>
+    </ion-button>
+  </ion-buttons>
+  <ion-title>
+    <img src="assets/logo-axion.png" alt="Logo Axion" class="logo" width="150px;" height="150px;">
+  </ion-title>
+  <ion-buttons slot="end">
+    <ion-button (click)="goToCart()">
+      <ion-icon name="cart"></ion-icon>
+    </ion-button>
+  </ion-buttons>
+
+  <div style="border-bottom: 1px solid white;"></div>
+  <app-greeting></app-greeting>
+
+  <img src="../assets/bebidas.jpg" alt="Categorías" />
+
+  <div class="row">
+    <div class="col">
+      <h3>CATEGORIAS</h3>
+    </div>
+    <div class="col">
+      <ion-button expand="full" color="light" (click)="viewMoreCategories()">
+        Ver Más
+      </ion-button>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col" *ngFor="let product of products">
+      <h4>{{ product.name }}</h4>
+      <img [src]="getImageUrl(product.image)" alt="{{ product.name }}" style="width: 75px; height: 75px;" />
+    </div>
+  </div>
+
+  <h3>Destacados</h3>
+  <div class="row">
+    <div class="col" *ngFor="let featured of featuredProducts">
+      <h4>{{ featured.name }}</h4>
+      <img [src]="featured.imageUrl" alt="{{ featured.name }}" />
+    </div>
   </div>
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-buttons slot="start" (click)="goToHome()">
+      <ion-icon name="home"></ion-icon>
+    </ion-buttons>
+    <ion-buttons slot="middle" (click)="goToCategories()">
+      <ion-icon name="list"></ion-icon>
+    </ion-buttons>
+    <ion-buttons slot="end" (click)="goToDelivery()">
+      <ion-icon name="car"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

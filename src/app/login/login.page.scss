@@ -1,12 +1,11 @@
 /* src/app/login/login.page.scss */
 .login-page {
-    --background: #D1117E;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    color: #ffffff;
-  }
+  background-image: url('/assets/fondo_login.png');
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  z-index: -1; /* Esto asegura que otros elementos estén encima */
+}
   
   .container {
     display: flex;
@@ -82,4 +81,11 @@
     height: auto;
     vertical-align: middle;
   }
-  
+  ion-content {
+    --background: url('/assets/fondo_login.png') no-repeat center center / cover;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
