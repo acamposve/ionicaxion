@@ -10,6 +10,7 @@ import { HttpClient } from '@angular/common/http';
 export class DetalleProductoPage implements OnInit {
   id: any;
   producto: any;
+  cantidad: number = 1;
   private baseUrl = 'https://amontefusco-002-site1.ktempurl.com/';
   constructor(private route: ActivatedRoute, private http: HttpClient) { }
 
@@ -20,6 +21,18 @@ export class DetalleProductoPage implements OnInit {
   getImageUrl(imagePath: string): string {
     return `${this.baseUrl}${imagePath}`;
   }
+  
+  
+  disminuirCantidad(): void {
+    if (this.cantidad > 1) {
+      this.cantidad--;
+    }
+  }
+
+  aumentarCantidad(): void {
+    this.cantidad++;
+  }
+  
   obtenerProducto(): void {
     const url = `https://amontefusco-002-site1.ktempurl.com/api/Products/${this.id}`;
 
