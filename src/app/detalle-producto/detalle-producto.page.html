@@ -1,13 +1,40 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>detalle-producto</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">detalle-producto</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <ion-grid style="row-gap: 10px;" class="ion-justify-content-center" *ngIf="producto">
+    <ion-row class="ion-align-items-center">
+      <ion-col><img [src]="getImageUrl(producto.image)" alt="{{ producto.name }}"  /></ion-col>
+    </ion-row>
+    <ion-row class="ion-align-items-center">
+      <ion-col><b>{{ producto.name }}</b></ion-col>
+    </ion-row>
+    <ion-row class="ion-align-items-center">
+      <ion-col>{{ producto.description }}</ion-col>
+    </ion-row>
+    <ion-row class="ion-align-items-center">
+      <ion-col style="color: #D1117E; font-size: 36px;"><b>${{ producto.price }}</b></ion-col>
+    </ion-row>
+    <ion-row class="ion-align-items-center">
+      <ion-col>
+        <ion-button (click)="disminuirCantidad()">-</ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-input type="number" [(ngModel)]="cantidad" style="width: 50px; text-align: center;"></ion-input>
+      </ion-col>
+      <ion-col>
+        <ion-button (click)="aumentarCantidad()">+</ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-align-items-center">
+      <ion-col>
+        <ion-button class="transparent-button">
+          <img src="assets/pedirDelivery.png" alt="Pedir Delivery">
+        </ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button class="transparent-button">
+          <img src="assets/addToCart.png" alt="Agregar al carrito">
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <p *ngIf="!producto">Cargando...</p>
 </ion-content>
