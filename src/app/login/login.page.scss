@@ -1,6 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 /* src/app/login/login.page.scss */
 .login-page {
-  background-image: url('/assets/fondo_login.png');
+  /*background-image: url('/assets/fondo_login.png');*/
   background-size: cover;
   background-position: center;
   height: 100vh;
@@ -15,25 +16,29 @@
     height: 100vh; /* Ocupa toda la altura de la pantalla */
   }
   
-  .header {
-    margin-top: 20px;
-    text-align: center;
+  h1,
+  h2{
+    text-transform: uppercase;
+    font-family: "Roboto", sans-serif;
   }
-  
-  .logo {
-    width: 100px;
-    height: auto;
-    margin-bottom: 10px;
+
+  h1{
+    font-weight: 300;
+    margin:5px 0 0 0;
+    font-size: 32px;
   }
-  
-  h1, h2 {
-    margin: 0;
+
+  h2{
+    font-weight: 700;
+    margin:-5px 0 0 0;
+    font-size: 22px;
+    text-align: right;
   }
-  
-  .welcome-message h3 {
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin: 20px 0;
+
+  h3 {
+    font-family: "Roboto", sans-serif;
+    font-weight: 200;
+    font-size: 42px;
   }
   
   .form-container {
@@ -57,13 +62,14 @@
   }
   
   .forgot-password {
-    margin-top: 10px;
+    margin: 15px 0;
     color: #ffffff;
   }
   
   ion-button {
     width: 100%;
     margin: 10px 0;
+    text-transform: uppercase;
   }
   
   .register-button {
@@ -72,20 +78,34 @@
   }
   
   .footer {
-    margin-top: 20px;
+    bottom: 20px;
     font-size: 0.8rem;
+    position: absolute;
   }
   
-  .william-logo {
-    width: 50px;
-    height: auto;
-    vertical-align: middle;
-  }
   ion-content {
-    --background: url('/assets/fondo_login.png') no-repeat center center / cover;
+    /*--background: url('/assets/fondo_login.png') no-repeat center center / cover;
     height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: center;*/
+  }
+
+  input::placeholder {
+    color: #fff !important;
+  }
+
+  .img_background{
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    z-index: -1;
+  }
+
+  .forgot-password a{
+    color: #fff;
+    text-decoration: none;
+    font-family: "Roboto", sans-serif;
+    font-size: 14px;
   }

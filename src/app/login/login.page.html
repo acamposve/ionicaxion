@@ -3,8 +3,10 @@
   <div class="container">
     <!-- Logo y título -->
     <div class="header">
-      <img src="assets/logo-axion.png" alt="Logo Axion" class="logo">
-      <h1>Santa Lucia</h1>
+      <div class="logo">
+        <img src="assets/logo-axion.png" alt="Axion" class="logo_top">
+      </div>
+      <h1>Santa Lucía</h1>
       <h2>Axion Shop</h2>
     </div>
 
@@ -16,13 +18,11 @@
     <!-- Contenedor de formulario -->
     <div class="form-container">
       <ion-item>
-        <ion-label position="floating">Teléfono</ion-label>
-        <ion-input type="tel" [(ngModel)]="phoneNumber"></ion-input>
+        <ion-input style="--background: #ffffff; --color: #000000;" type="tel" [(ngModel)]="phoneNumber"></ion-input>
       </ion-item>
       
       <ion-item>
-        <ion-label position="floating">Contraseña</ion-label>
-        <ion-input type="password" [(ngModel)]="password"></ion-input>
+        <ion-input style="--background: #ffffff; --color: #000000;" type="password" [(ngModel)]="password"></ion-input>
       </ion-item>
 
       <!-- Link para recuperar contraseña -->
@@ -39,7 +39,8 @@
 
     <!-- Footer -->
     <div class="footer">
-      <p>Powered By <img src="assets/logo_william.png" alt="Logo William" class="william-logo"></p>
+      <p>By <img src="assets/icon_by.png" alt="DobleV" class="by"></p>
     </div>
+    <div class="img_background"><img src="assets/bg_login.png"></div>
   </div>
 </ion-content>
