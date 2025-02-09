@@ -1,44 +1,73 @@
-<ion-content padding>
+<!-- HEADER -->
+<ion-header>
+  <ion-toolbar>
+    <!-- MENU -->
+    <ion-buttons slot="start">
+      <ion-button (click)="openMenu()">
+        <!--<ion-icon name="menu"></ion-icon>-->
+        <img src="assets/icon-menu.png" alt="cart" class="icon-menu">
+      </ion-button>
+    </ion-buttons>
 
-  <ion-buttons slot="start">
-    <ion-button (click)="openMenu()">
-      <ion-icon name="menu"></ion-icon>
-    </ion-button>
-  </ion-buttons>
-  <ion-title>
-    <img src="assets/logo-axion-colour.png" alt="Axion" class="logo">
-  </ion-title>
-  <ion-buttons slot="end">
-    <ion-button (click)="goToCart()">
-      <ion-icon name="cart"></ion-icon>
-    </ion-button>
-  </ion-buttons>
+    <!-- ICONO -->
+    <ion-title>
+      <img src="assets/logo-axion-colour.png" alt="Axion" class="logo">
+    </ion-title>
 
-  <div style="border-bottom: 1px solid white;"></div>
+    <!-- CART -->
+    <ion-buttons slot="end">
+      <ion-button (click)="goToCart()">
+        <!--<ion-icon name="cart"></ion-icon>-->
+        <img src="assets/icon-cart.png" alt="cart" class="icon-cart">
+      </ion-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+<!-- end HEADER -->
+
+<!-- CONTENT -->
+<ion-content>
+  <!-- TEXT WELCOME -->
   <app-greeting></app-greeting>
+  <!-- end TEXT WELCOME -->
 
+  <!-- CATEGORIES -->
   <app-categories></app-categories>
+  <!-- endCATEGORIES -->
 
-
-  <h3>Destacados</h3>
-  <div class="row">
-    <div class="col" *ngFor="let featured of featuredProducts">
-      <h4>{{ featured.name }}</h4>
-      <img [src]="featured.imageUrl" alt="{{ featured.name }}" />
+  <div class="featured-bottom">
+    <h3>Destacados</h3>
+    <div class="row">
+      <div class="col" *ngFor="let featured of featuredProducts">
+        <img [src]="featured.imageUrl" alt="{{ featured.name }}" />
+        <h4>{{ featured.name }}</h4>
+        <p class="details">{{ featured.details }} Breve descripción...</p>
+        <p class="price">{{ featured.price }} $ 350</p>
+      </div>
     </div>
   </div>
+
+  <div class="img_background">
+    <img src="assets/background_home.png">
+  </div>
 </ion-content>
+<!-- end CONTENT -->
 
 <ion-footer>
   <ion-toolbar>
-    <ion-buttons slot="start" (click)="goToHome()">
-      <ion-icon name="home"></ion-icon>
+
+    <ion-buttons class="icon-home-bottom" slot="start" (click)="goToHome()">
+      <img src="assets/icon-home-bottom.png">
     </ion-buttons>
-    <ion-buttons slot="middle" (click)="goToCategories()">
-      <ion-icon name="list"></ion-icon>
+
+    <ion-buttons class="icon-categories-bottom" slot="middle" (click)="goToCategories()">
+      <img src="assets/icon-categories-bottom.png">
     </ion-buttons>
-    <ion-buttons slot="end" (click)="goToDelivery()">
-      <ion-icon name="car"></ion-icon>
+    
+    <ion-buttons class="order-delivery" slot="end" (click)="goToDelivery()">
+      <img src="assets/order-delivery.png">
     </ion-buttons>
+
   </ion-toolbar>
 </ion-footer>

@@ -1,31 +1,90 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
-.footer p{
-    font-family: "Roboto", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-    text-transform: uppercase;
-    font-size: 9px;
-    letter-spacing: 1px;
-    color: #282828;
+/****HEADER****/
+ion-header {
+    background-color: #FFFFFF !important;
+    box-shadow: none !important; // Sombra para mayor visibilidad
 }
 
-.footer img{
-    max-width: 15px;
-    vertical-align: middle;
-    margin: -10px 0 0 0;
+ion-header ion-toolbar{
+    height: 80px;
+    display: flex;
+    margin: 0 auto;
+    border-bottom: 2px solid #D1117E !important; // Esto puede ayudarte a visualizar el contorno
+    width: 88%;
 }
 
-.header{
-    margin: 20px auto;
+ion-header ion-toolbar ion-buttons ion-icon{
+    color: #AFAFAF;
+    font-size: 28px;
+}
+
+ion-header ion-toolbar ion-button{
+    --padding-top: 0 !important;
+    --padding-bottom: 0 !important;
+    --padding-start: 0 !important;
+    --padding-end: 0 !important;
+}
+
+ion-header ion-toolbar ion-buttons img.icon-cart{
+    width: 33px;
+}
+
+ion-header ion-toolbar ion-buttons img.icon-menu{
+    width: 22px;
+}
+
+ion-title{
     text-align: center;
-    top: 20px;
-    position: absolute;
 }
 
-.header img{
-    max-width: 60px;
+ion-title img{
+    width: 43px;
+    height: 43px;
 }
+
+/****end HEADER****/
+
+/****TEXT WELCOME****/
+app-greeting ion-text h2{
+    font-size: 18px !important;
+    font-weight: 400 !important;
+}
+
+app-greeting ion-text span.name-color{
+    color: #D1117E;
+    font-weight: 600;
+}
+/****end TEXT WELCOME****/
+
+/****HOME****/
+    /*CATEGORIES******/
+    app-categories div.featured-img{
+        border-radius: 15px;
+        border: 5px solid #ffffff;
+    }
+
+    app-categories ion-grid ion-col h3{
+        color: #FFFFFF;
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        margin: 15px 0 0 0;
+    }
+
+    app-categories ion-grid ion-col button{
+        text-transform: uppercase;
+        font-size: 8px;
+        font-weight: 500;
+        letter-spacing: 0.5px;
+        color: #D1117E;
+        padding: 5px 15px;
+        background: #FFFFFF;
+        border-radius: 18px;
+        float: right;
+        margin: 15px 0 0 0;
+    }
+/****end HOME****/
 
 ion-content {
     background: #fff !important;
@@ -35,3 +94,17 @@ ion-input, ion-textarea, ion-select {
     --background: #ffffff; /* Fondo blanco */
     --color: #000000; /* Texto negro */
   }
+
+/****FOOTER****/
+ion-footer ion-toolbar ion-buttons.icon-home-bottom img{
+    width: 35px;
+}
+
+ion-footer ion-toolbar ion-buttons.icon-categories-bottom img{
+    width: 32px;
+}
+
+ion-footer ion-toolbar ion-buttons.order-delivery img{
+    width: 97px;
+}
+/****end FOOTER****/

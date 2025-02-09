@@ -2,7 +2,8 @@
 import { Component } from '@angular/core';
 import { AuthService, LoginRequest } from '../auth.service';
 import { Router } from '@angular/router';
-import { ToastController } from '@ionic/angular';
+import { ToastController, ModalController  } from '@ionic/angular';
+import { RecoverPasswordComponent } from '../recover-password/recover-password.component';
 
 @Component({
   selector: 'app-login',
@@ -12,12 +13,29 @@ import { ToastController } from '@ionic/angular';
 export class LoginPage {
   phoneNumber: string = '';
   password: string = '';
+  message = 'This modal example uses the modalController to present and dismiss modals.';
 
   constructor(
     private authService: AuthService,
     private router: Router,
-    private toastController: ToastController
+    private toastController: ToastController,
+    private modalCtrl: ModalController
   ) {}
+
+
+  async openModal() {
+    const modal = await this.modalCtrl.create({
+      component: RecoverPasswordComponent,
+    });
+    modal.present();
+
+    const { data, role } = await modal.onWillDismiss();
+
+    if (role === 'confirm') {
+      this.message = `Hello, ${data}!`;
+    }
+  }
+
 
   async presentToast(message: string, color: string) {
     const toast = await this.toastController.create({
