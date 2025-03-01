@@ -10,37 +10,54 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # 1. Checkout del código
       - name: Checkout code
         uses: actions/checkout@v3
 
+      # 2. Instalar Node.js
       - name: Install Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 18
 
+      # 3. Instalar dependencias
       - name: Install dependencies
         run: npm install
 
+      # 4. Instalar Ionic y Capacitor
       - name: Install Ionic and Capacitor
         run: npm install -g @ionic/cli @capacitor/core @capacitor/cli
 
+      # 5. Construir la aplicación Ionic
       - name: Build Ionic App
         run: ionic build --prod
 
+      # 6. Sincronizar Capacitor
       - name: Sync Capacitor
         run: npx cap sync
 
-      # Construcción para Android
+      # 7. Crear el archivo `environment.prod.ts` dinámicamente
+      - name: Create environment.prod.ts
+        run: |
+          echo "export const environment = {" > src/environments/environment.prod.ts
+          echo "  production: true," >> src/environments/environment.prod.ts
+          echo "  SUPABASE_URL: '${{ secrets.SUPABASE_URL }}'," >> src/environments/environment.prod.ts
+          echo "  SUPABASE_KEY: '${{ secrets.SUPABASE_KEY }}'" >> src/environments/environment.prod.ts
+          echo "};" >> src/environments/environment.prod.ts
+
+      # 8. Construcción para Android
       - name: Build Android
         run: |
           npm install -g cordova-res
           npx cap sync android
           cd android && ./gradlew assembleRelease
 
+      # 9. Renombrar el APK con timestamp
       - name: Rename APK with timestamp
         run: |
           mv android/app/build/outputs/apk/release/app-release.apk android/app/build/outputs/apk/release/app-$(date +%Y%m%d%H%M).apk
 
+      # 10. Subir el APK vía FTP
       - name: Upload APK via FTP
         uses: SamKirkland/ftp-deploy-action@v4.3.4
         with:
@@ -53,36 +70,44 @@ jobs:
   build_ios:
     runs-on: macos-latest  # Necesario para construir iOS
     steps:
+      # 1. Checkout del código
       - name: Checkout code
         uses: actions/checkout@v3
 
+      # 2. Instalar Node.js
       - name: Install Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 18
 
+      # 3. Instalar dependencias
       - name: Install dependencies
         run: npm install
 
+      # 4. Instalar Ionic y Capacitor
       - name: Install Ionic and Capacitor
         run: npm install -g @ionic/cli @capacitor/core @capacitor/cli
 
+      # 5. Construir la aplicación Ionic
       - name: Build Ionic App
         run: ionic build --prod
 
+      # 6. Sincronizar Capacitor
       - name: Sync Capacitor
         run: npx cap sync
 
-      # Construcción para iOS
+      # 7. Construcción para iOS
       - name: Build iOS
         run: |
           npx cap sync ios
           cd ios && xcodebuild -workspace App.xcworkspace -scheme App -sdk iphoneos -configuration Release -archivePath output.xcarchive archive
 
+      # 8. Renombrar el archivo de iOS con timestamp
       - name: Rename iOS build with timestamp
         run: |
           mv ios/output.xcarchive ios/output-$(date +%Y%m%d%H%M).xcarchive
 
+      # 9. Subir el archivo de iOS vía FTP
       - name: Upload iOS build via FTP
         uses: SamKirkland/ftp-deploy-action@v4.3.4
         with:
