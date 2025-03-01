@@ -3,7 +3,7 @@ name: Build and Upload Ionic App
 on:
   push:
     branches:
-      - main  # Cambia esto si deseas otro branch
+      - master  # Cambia esto si deseas otro branch
 
 jobs:
   build:
