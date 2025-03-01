@@ -17,9 +17,9 @@
   <div class="row">
     <ion-grid>
       <ion-row>
-        <ion-col *ngFor="let product of products">      
-          <img [src]="getImageUrl(product.image)" alt="{{ product.name }}" style="width: 72px; height: auto;" />
-          <button [routerLink]="['/detalle-producto', product.id]">{{ product.name }}</button>
+        <ion-col *ngFor="let categoria of categorias">      
+          <!-- <img [src]="getImageUrl(product.image)" alt="{{ categoria.name }}" style="width: 72px; height: auto;" /> -->
+          <button [routerLink]="['/detalle-producto', categoria.id]">{{ categoria.name }}</button>
         </ion-col>
       </ion-row>
     </ion-grid>
