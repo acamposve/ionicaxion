@@ -10,42 +10,32 @@
       <h2>Axion Shop</h2>
     </div>
 
+    <!-- Mensaje de bienvenida -->
+    <div class="welcome-message">
+      <h3>Bienvenido</h3>
+    </div>
+
     <!-- Contenedor de formulario -->
     <div class="form-container">
-
       <ion-item>
-        <ion-input style="--background: #ffffff; --color: #000000;" type="tel" [(ngModel)]="email"></ion-input>
+        <ion-input style="--background: #ffffff; --color: #000000;" type="tel" [(ngModel)]="phoneNumber"></ion-input>
       </ion-item>
       
       <ion-item>
         <ion-input style="--background: #ffffff; --color: #000000;" type="password" [(ngModel)]="password"></ion-input>
       </ion-item>
 
-      <!--<div class="input-login">
-        <input type="tel" id="phone" name="phone" required minlength="9" maxlength="9" />
-      </div>
-      
-      <div class="input-login">
-        <input type="password" id="password" name="password" required  />
-      </div>-->
-      
-
       <!-- Link para recuperar contraseña -->
       <div class="forgot-password">
-        <a href="">¿Olvidaste tu contraseña?</a>
+
+
+        <ion-button expand="block" (click)="openModal()">¿Olvidaste tu contraseña?</ion-button>
+
       </div>
 
       <!-- Botones de ingreso y registro -->
       <ion-button expand="block" color="dark" (click)="login()">Entrar</ion-button>
       <ion-button expand="block" color="primary" (click)="navigateToRegister()">Regístrate</ion-button>
-
-      <!--<div class="btn-entrar">
-        <a class="" href="">Entrar</a>
-      </div>
-      
-      <div class="btn-registro">
-        <a class="" href="">Regístrate</a>
-      </div>-->
     </div>
 
     <!-- Footer -->

@@ -8,7 +8,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'splash',
+    redirectTo: 'login',
     pathMatch: 'full'
   },
   {
@@ -23,10 +23,7 @@ const routes: Routes = [
     path: 'register',
     loadChildren: () => import('./registro/registro.module').then( m => m.RegistroPageModule)
   },
-  {
-    path: 'categorias',
-    loadChildren: () => import('./categorias/categorias.module').then( m => m.CategoriasPageModule)
-  },
+  
   {
     path: 'detalle-producto/:id',
     loadChildren: () => import('./detalle-producto/detalle-producto.module').then( m => m.DetalleProductoPageModule)

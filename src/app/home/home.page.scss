@@ -1,3 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+app-greeting,
+app-categories{
+  margin: 0 auto;
+  width: 88%;
+  display: flex;
+}
+
+ion-content div.featured-bottom{
+  margin: 0 auto;
+  width: 88%;
+}
+
+ion-content div.featured-bottom div.col{
+  margin:0 5px;
+}
+
+ion-content div.featured-bottom h3{
+  color: #D1117E;
+  font-size: 13px;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  margin: 15px 0 0 0;
+}
+
+ion-content div.featured-bottom h4{
+  color: #282828;
+  font-size: 12px;
+  font-weight: 600;
+  margin: 5px 0 0 0;
+}
+
+ion-content div.featured-bottom p.details{
+  color: #282828;
+  font-size: 10px;
+  font-weight: 400;
+  margin: 5px 0 0 0;
+}
+
+ion-content div.featured-bottom p.price{
+  color: #282828;
+  font-size: 20px;
+  font-weight: 600;
+  margin: 5px 0 0 0;
+}
+
+app-categories{
+  margin: 10px auto 0 auto;
+}
+
 .row {
   display: flex;
   justify-content: space-between;
@@ -13,20 +65,14 @@ h3 {
   margin-top: 20px;
 }
 
-
-ion-header {
-  background-color: #D1117E !important;
-  border-bottom: 2px solid black; // Esto puede ayudarte a visualizar el contorno
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); // Sombra para mayor visibilidad
-}  
-
-
-
-
-ion-content{
-  --background: #EFF6FD url('../../assets/fondo_login.png') no-repeat 100% 100%;
-}
-
 .text-center {
   text-align: center;
+}
+
+.img_background{
+  height: 100vh;
+  width: 100vw;
+  top: 50px;
+  position: absolute;
+  z-index: -1;
 }

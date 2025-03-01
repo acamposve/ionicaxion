@@ -1,30 +1,28 @@
-<div class="text-center">
-  <img src="../assets/bebidas.jpg" alt="Categorías" />
+<div class="">
+  <div class="featured-img">
+    <img src="../assets/bebidas.png" alt="Categorías" />
+  </div>
 
   <ion-grid>
     <ion-row>
-      <ion-col>  <h3 style="color: #FFFFFF;">CATEGORIAS</h3>
-   </ion-col>
-      <ion-col>      <button expand="full" color="light" (click)="viewMoreCategories()">
-        Ver Más
-      </button>2</ion-col>
+      <ion-col>
+        <h3>CATEGORÍAS</h3>
+      </ion-col>
+      <ion-col>
+        <button expand="full" (click)="viewMoreCategories()">Ver Más</button>
+      </ion-col>
     </ion-row>
   </ion-grid>
 
-
-  
   <div class="row">
-    <div class="col-md-3 flex-column" >
-
-    </div>
-
     <ion-grid>
       <ion-row>
-        <ion-col *ngFor="let product of products">      
-          <img [src]="getImageUrl(product.image)" alt="{{ product.name }}" style="width: 75px; height: 75px;" />
-          <button [routerLink]="['/detalle-producto', product.id]">{{ product.name }}</button>
+        <ion-col *ngFor="let categoria of categorias">      
+          <!-- <img [src]="getImageUrl(product.image)" alt="{{ categoria.name }}" style="width: 72px; height: auto;" /> -->
+          <button [routerLink]="['/detalle-producto', categoria.id]">{{ categoria.name }}</button>
         </ion-col>
       </ion-row>
     </ion-grid>
   </div>
+
 </div>

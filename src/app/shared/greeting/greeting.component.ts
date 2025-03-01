@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../auth.service'; // Asegúrate de que la ruta es correcta
+import { AuthService } from 'src/app/auth/data-access/auth.service';
+
+
 @Component({
   selector: 'app-greeting',
   templateUrl: './greeting.component.html',
@@ -9,6 +11,9 @@ export class GreetingComponent  implements OnInit {
   userName: string | null = '';
   constructor(private authService: AuthService) { }
 
-  ngOnInit() { console.log("username " + this.authService.getUserName());   this.userName = this.authService.getUserName();}
+  ngOnInit() { 
+
+    
+  }
 
 }

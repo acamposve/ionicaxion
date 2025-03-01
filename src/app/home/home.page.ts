@@ -20,7 +20,7 @@ export class HomePage implements OnInit {
     // Aquí podrías obtener los datos de usuario y productos de tu API
     this.image ="https://material.angular.io/assets/img/examples/shiba1.jpg";
     this.loadProducts();
-    this.featuredProducts = [{ name: 'Destacado 1', imageUrl: '../assets/dest1.png' }, { name: 'Destacado 2', imageUrl: '../assets/dest2.png' }]; // Obtener de la API
+    this.featuredProducts = [{ name: 'Título', imageUrl: '../assets/featured-bottom.png' }, { name: 'Título', imageUrl: '../assets/featured-bottom.png' } , { name: 'Título', imageUrl: '../assets/featured-bottom.png' }]; // Obtener de la API
   }
 
 

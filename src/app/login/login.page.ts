@@ -1,8 +1,8 @@
-// src/app/login/login.page.ts
 import { Component } from '@angular/core';
-import { AuthService, LoginRequest } from '../auth.service';
 import { Router } from '@angular/router';
-import { ToastController } from '@ionic/angular';
+import { ToastController, ModalController } from '@ionic/angular';
+import { RecoverPasswordComponent } from '../recover-password/recover-password.component';
+import { AuthService } from '../auth/data-access/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -10,50 +10,61 @@ import { ToastController } from '@ionic/angular';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage {
-  phoneNumber: string = '';
+  email: string = '';
   password: string = '';
 
   constructor(
     private authService: AuthService,
     private router: Router,
-    private toastController: ToastController
+    private toastController: ToastController,
+    private modalCtrl: ModalController
   ) {}
+
+  async openModal() {
+    const modal = await this.modalCtrl.create({
+      component: RecoverPasswordComponent,
+    });
+    await modal.present();
+  }
 
   async presentToast(message: string, color: string) {
     const toast = await this.toastController.create({
       message: message,
       duration: 2000,
       color: color,
-      position: 'top'
+      position: 'top',
     });
     toast.present();
   }
 
-
-
   navigateToRegister() {
-    this.router.navigate(['/register']); // Navega a la página de registro
+    this.router.navigate(['/register']);
   }
 
-
   login() {
-    const loginRequest: LoginRequest = {
-      PhoneNumber: this.phoneNumber,
-      Password: this.password,
+    const loginRequest = {
+      email: this.email, // ✅ Usa "email" y "password" en minúscula
+      password: this.password,
     };
 
-    this.authService.login(loginRequest).subscribe(
-      response => {
+    this.authService.logIn(loginRequest).subscribe(
+      (response) => {
+        if (response.error) {
+          console.error('Login failed:', response.error);
+          this.presentToast('Login falló! Revise sus datos.', 'danger');
+          return;
+        }
+
         console.log('Login successful:', response);
         this.presentToast('Login exitoso', 'success');
 
-        const userName = response.fullName; // Obtener el nombre del usuario
-        this.authService.setUserName(userName); 
+        const userName = response.data.user?.email ?? 'Usuario';
+        this.authService.setUserName(userName);
         this.router.navigate(['/home']);
       },
-      error => {
-        console.error('Login failed:', error);
-        this.presentToast('Login falló! Revise sus datos.', 'danger');
+      (error) => {
+        console.error('Login error:', error);
+        this.presentToast('Error de conexión. Inténtelo de nuevo.', 'danger');
       }
     );
   }

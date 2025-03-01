@@ -1,0 +1,93 @@
+name: Build and Upload Ionic App
+
+on:
+  push:
+    branches:
+      - main  # Cambia esto si deseas otro branch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Install Ionic and Capacitor
+        run: npm install -g @ionic/cli @capacitor/core @capacitor/cli
+
+      - name: Build Ionic App
+        run: ionic build --prod
+
+      - name: Sync Capacitor
+        run: npx cap sync
+
+      # Construcción para Android
+      - name: Build Android
+        run: |
+          npm install -g cordova-res
+          npx cap sync android
+          cd android && ./gradlew assembleRelease
+
+      - name: Rename APK with timestamp
+        run: |
+          mv android/app/build/outputs/apk/release/app-release.apk android/app/build/outputs/apk/release/app-$(date +%Y%m%d%H%M).apk
+
+      - name: Upload APK via FTP
+        uses: sebastianpopp/ftp-action@v2
+        with:
+          host: ${{ secrets.FTP_HOST }}
+          user: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          localDir: android/app/build/outputs/apk/release/
+          remoteDir: /public_html/builds/
+
+  build_ios:
+    runs-on: macos-latest  # Necesario para construir iOS
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Install Ionic and Capacitor
+        run: npm install -g @ionic/cli @capacitor/core @capacitor/cli
+
+      - name: Build Ionic App
+        run: ionic build --prod
+
+      - name: Sync Capacitor
+        run: npx cap sync
+
+      # Construcción para iOS
+      - name: Build iOS
+        run: |
+          npx cap sync ios
+          cd ios && xcodebuild -workspace App.xcworkspace -scheme App -sdk iphoneos -configuration Release -archivePath output.xcarchive archive
+
+      - name: Rename iOS build with timestamp
+        run: |
+          mv ios/output.xcarchive ios/output-$(date +%Y%m%d%H%M).xcarchive
+
+      - name: Upload iOS build via FTP
+        uses: sebastianpopp/ftp-action@v2
+        with:
+          host: ${{ secrets.FTP_HOST }}
+          user: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          localDir: ios/
+          remoteDir: /public_html/builds/

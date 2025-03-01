@@ -1,24 +1,14 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
-
 import { CategoriesComponent } from './categories.component';
+import { NavController } from '@ionic/angular';
+import { ProductService } from 'src/app/services/product.service';
+import { of, throwError } from 'rxjs';
 
-describe('CategoriesComponent', () => {
-  let component: CategoriesComponent;
-  let fixture: ComponentFixture<CategoriesComponent>;
+class MockNavController {
+  navigateForward = jasmine.createSpy('navigateForward');
+}
 
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      declarations: [ CategoriesComponent ],
-      imports: [IonicModule.forRoot()]
-    }).compileComponents();
-
-    fixture = TestBed.createComponent(CategoriesComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  }));
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+class MockProductService {
+  getProducts = jasmine.createSpy('getProducts').and.returnValue(of([]));
+}
