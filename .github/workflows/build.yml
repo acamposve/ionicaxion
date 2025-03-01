@@ -42,13 +42,13 @@ jobs:
           mv android/app/build/outputs/apk/release/app-release.apk android/app/build/outputs/apk/release/app-$(date +%Y%m%d%H%M).apk
 
       - name: Upload APK via FTP
-        uses: sebastianpopp/ftp-action@v2
+        uses: SamKirkland/FTP-Deploy-Action@v4
         with:
-          host: ${{ secrets.FTP_HOST }}
-          user: ${{ secrets.FTP_USERNAME }}
+          server: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          localDir: android/app/build/outputs/apk/release/
-          remoteDir: /public_html/builds/
+          local-dir: android/app/build/outputs/apk/release/
+          server-dir: /public_html/builds/
 
   build_ios:
     runs-on: macos-latest  # Necesario para construir iOS
@@ -84,10 +84,10 @@ jobs:
           mv ios/output.xcarchive ios/output-$(date +%Y%m%d%H%M).xcarchive
 
       - name: Upload iOS build via FTP
-        uses: sebastianpopp/ftp-action@v2
+        uses: SamKirkland/FTP-Deploy-Action@v4
         with:
-          host: ${{ secrets.FTP_HOST }}
-          user: ${{ secrets.FTP_USERNAME }}
+          server: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          localDir: ios/
-          remoteDir: /public_html/builds/
+          local-dir: ios/
+          server-dir: /public_html/builds/
