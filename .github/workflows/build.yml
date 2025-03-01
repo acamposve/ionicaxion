@@ -42,7 +42,7 @@ jobs:
           mv android/app/build/outputs/apk/release/app-release.apk android/app/build/outputs/apk/release/app-$(date +%Y%m%d%H%M).apk
 
       - name: Upload APK via FTP
-        uses: SamKirkland/FTP-Deploy-Action@v4
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
           server: ${{ secrets.FTP_HOST }}
           username: ${{ secrets.FTP_USERNAME }}
@@ -84,10 +84,4 @@ jobs:
           mv ios/output.xcarchive ios/output-$(date +%Y%m%d%H%M).xcarchive
 
       - name: Upload iOS build via FTP
-        uses: SamKirkland/FTP-Deploy-Action@v4
-        with:
-          server: ${{ secrets.FTP_HOST }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: ios/
-          server-dir: /public_html/builds/
+        uses: SamKirkla
