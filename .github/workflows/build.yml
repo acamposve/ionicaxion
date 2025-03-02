@@ -93,11 +93,15 @@ jobs:
       - name: Build Ionic App
         run: ionic build --prod
 
-      # 6. Agregar la plataforma iOS antes de sincronizar
+      # 4. Instalar la plataforma iOS de Capacitor
+      - name: Install iOS platform
+        run: npm install @capacitor/ios
+
+      # 5. Agregar la plataforma iOS
       - name: Add iOS platform
         run: npx cap add ios
 
-      # 7. Sincronizar Capacitor con iOS
+      # 6. Sincronizar Capacitor con iOS
       - name: Sync Capacitor
         run: npx cap sync ios
 
