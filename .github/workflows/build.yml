@@ -55,10 +55,8 @@ jobs:
           npm install -g cordova-res
           cd android && ./gradlew assembleRelease
 
-      # 10. Renombrar el APK con timestamp
-      - name: Rename APK with timestamp
-        run: |
-          mv android/app/build/outputs/apk/release/app-release.apk android/app/build/outputs/apk/release/app-$(date +%Y%m%d%H%M).apk
+     
+          
 
       # 11. Subir el APK vía FTP
       - name: Upload APK via FTP
