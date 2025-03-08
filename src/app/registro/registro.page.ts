@@ -16,6 +16,8 @@ export class RegistroPage implements OnInit {
     street: '',
     number: '',
     password: '',
+    email: '',
+    confirmEmail: '', // Agregado para enviar a la API
     confirmPassword: '' // Agregado para enviar a la API
   };
 

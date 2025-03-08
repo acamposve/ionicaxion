@@ -1,5 +1,4 @@
 <ion-content class="register-page">
-
   <ion-grid>
     <ion-row>
       <ion-col>    
@@ -9,70 +8,67 @@
 
     <ion-row>
       <ion-col>    
-        <ion-input type="text" label="Nombre" label-placement="floating" fill="outline"  [(ngModel)]="formData.firstName" placeholder="Nombre"></ion-input>
+        <ion-input type="text" label="Nombre" label-placement="floating" fill="outline" [(ngModel)]="formData.firstName" placeholder="Nombre"></ion-input>
       </ion-col>
-
     </ion-row>
+    
     <ion-row>
       <ion-col>    
-        <ion-input type="text"  label="Apellido" label-placement="floating" fill="outline"  [(ngModel)]="formData.lastName" placeholder="Apellido"></ion-input>
+        <ion-input type="text" label="Apellido" label-placement="floating" fill="outline" [(ngModel)]="formData.lastName" placeholder="Apellido"></ion-input>
       </ion-col>
-
     </ion-row>
+    
     <ion-row>
       <ion-col>      
-        <ion-input type="tel" label="Célular" label-placement="floating" fill="outline"  [(ngModel)]="formData.phoneNumber"></ion-input>
+        <ion-input type="tel" label="Célular" label-placement="floating" fill="outline" [(ngModel)]="formData.phoneNumber"></ion-input>
       </ion-col>
       <ion-col>      
-        <ion-input type="tel" label="Repetir Célular" label-placement="floating" fill="outline"  [(ngModel)]="confirmPhoneNumber"></ion-input>
+        <ion-input type="tel" label="Repetir Célular" label-placement="floating" fill="outline" [(ngModel)]="confirmPhoneNumber"></ion-input>
       </ion-col>
-
     </ion-row>
+    
     <ion-row>
-      <ion-col><ion-input type="text" label="Calle" label-placement="floating" fill="outline"   [(ngModel)]="formData.street"></ion-input></ion-col>
-      <ion-col> <ion-input type="text" label="Número" label-placement="floating" fill="outline"    [(ngModel)]="formData.number"></ion-input></ion-col>
-
+      <ion-col>
+        <ion-input type="email" label="Correo Electrónico" label-placement="floating" fill="outline" [(ngModel)]="formData.email" placeholder="Correo Electrónico"></ion-input>
+      </ion-col>
+      <ion-col>
+        <ion-input type="email" label="Confirmar Correo Electrónico" label-placement="floating" fill="outline" [(ngModel)]="formData.confirmEmail" placeholder="Confirmar Correo Electrónico"></ion-input>
+      </ion-col>
     </ion-row>
+    
     <ion-row>
-      <ion-col><ion-input type="password" label="Contraseña" label-placement="floating" fill="outline"    [(ngModel)]="formData.password"></ion-input></ion-col>
-      <ion-col><ion-input type="password" label="Repetir Contraseña" label-placement="floating" fill="outline"    [(ngModel)]="formData.confirmPassword"></ion-input></ion-col>
-
+      <ion-col><ion-input type="text" label="Calle" label-placement="floating" fill="outline" [(ngModel)]="formData.street"></ion-input></ion-col>
+      <ion-col><ion-input type="text" label="Número" label-placement="floating" fill="outline" [(ngModel)]="formData.number"></ion-input></ion-col>
     </ion-row>
+    
     <ion-row>
-      <ion-col>  <div class="terms">
-        <ion-checkbox slot="start" [(ngModel)]="termsAccepted"></ion-checkbox>
-        <ion-label>Acepto Términos y condiciones</ion-label>
-      </div></ion-col>
-
+      <ion-col><ion-input type="password" label="Contraseña" label-placement="floating" fill="outline" [(ngModel)]="formData.password"></ion-input></ion-col>
+      <ion-col><ion-input type="password" label="Repetir Contraseña" label-placement="floating" fill="outline" [(ngModel)]="formData.confirmPassword"></ion-input></ion-col>
     </ion-row>
+    
+    <ion-row>
+      <ion-col>  
+        <div class="terms">
+          <ion-checkbox slot="start" [(ngModel)]="termsAccepted"></ion-checkbox>
+          <ion-label>Acepto Términos y condiciones</ion-label>
+        </div>
+      </ion-col>
+    </ion-row>
+    
     <ion-row>
       <ion-col>  <hr class="separator"></ion-col>
-
     </ion-row>
+    
     <ion-row>
-      <ion-col>  <div class="required-fields">
-        <p>* TODOS LOS CAMPOS SON OBLIGATORIOS</p>
-      </div></ion-col>
-
+      <ion-col>  
+        <div class="required-fields">
+          <p>* TODOS LOS CAMPOS SON OBLIGATORIOS</p>
+        </div>
+      </ion-col>
     </ion-row>
+    
     <ion-row>
       <ion-col> <ion-button expand="full" (click)="register()">REGISTRARME</ion-button></ion-col>
-
     </ion-row>
-  </ion-grid>
-  
-
-
-
-  <!-- Términos y condiciones -->
-
-
-  <!-- Línea separadora -->
-
-
-  <!-- Texto de campos obligatorios -->
-
-
-  <!-- Botón de registro -->
- 
+  </ion-grid> 
 </ion-content>
