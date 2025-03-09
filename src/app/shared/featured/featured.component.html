@@ -1,0 +1,11 @@
+<div class="featured-bottom">
+  <h3>Destacados</h3>
+  <div class="row">
+    <div class="col" *ngFor="let featured of featuredProducts">
+      <img [src]="featured.imageUrl" alt="{{ featured.name }}" />
+      <h4>{{ featured.name }}</h4>
+      <p class="details">{{ featured.details }} Breve descripción...</p>
+      <p class="price">{{ featured.price }} $ 350</p>
+    </div>
+  </div>
+</div>

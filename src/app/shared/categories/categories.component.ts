@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { CategoriesService } from 'src/app/services/categories.service';
-import { ProductService } from 'src/app/services/product.service';
+
 
 @Component({
   selector: 'app-categories',
@@ -23,8 +23,10 @@ export class CategoriesComponent  implements OnInit {
   }
   
   loadCategorias() {
-    this.categoriasService.getCategorias().then((categorias) => {
-      this.categorias = categorias;
+    this.categoriasService.getFirstCategory().subscribe((categoria) => {
+      if (categoria) {
+        this.categorias = [categoria];
+      }
     });
   }
   

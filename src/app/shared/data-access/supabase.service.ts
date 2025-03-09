@@ -11,7 +11,11 @@ export class SupabaseService {
 
     this.supabaseClient = createClient(
       environment.SUPABASE_URL,
-      environment.SUPABASE_KEY,
+      environment.SUPABASE_KEY,{
+        auth: {
+          persistSession: false // Evita usar localStorage para la sesión
+        }
+      }
     );
 
   }

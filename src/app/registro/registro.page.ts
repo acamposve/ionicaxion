@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ToastController, NavController } from '@ionic/angular';
+import { AuthService } from '../auth/data-access/auth.service';
 
 @Component({
   selector: 'app-registro',
@@ -26,7 +27,8 @@ export class RegistroPage implements OnInit {
   constructor(
     private http: HttpClient,
     private toastController: ToastController,
-    private navCtrl: NavController
+    private navCtrl: NavController,
+    private authService: AuthService
   ) {}
 
   ngOnInit() {}
@@ -36,16 +38,14 @@ export class RegistroPage implements OnInit {
       this.presentToast('Debes aceptar los términos y condiciones.', 'danger');
       return;
     }
-
+  
     if (this.formData.password !== this.formData.confirmPassword) {
       this.presentToast('Las contraseñas no coinciden.', 'danger');
       return;
     }
-
+  
     try {
-
-      console.log(this.formData);
-      const response = await this.http.post('https://amontefusco-002-site1.ktempurl.com/api/Auth/register', this.formData).toPromise();
+      await this.authService.registerUser(this.formData);
       this.presentToast('Registro exitoso', 'success');
       this.navCtrl.navigateRoot('/login');
     } catch (error) {
@@ -53,6 +53,7 @@ export class RegistroPage implements OnInit {
       this.presentToast('Error al registrar, revise sus datos.', 'danger');
     }
   }
+  
 
   async presentToast(message: string, color: string) {
     const toast = await this.toastController.create({

@@ -6,7 +6,7 @@
   <ion-grid>
     <ion-row>
       <ion-col>
-        <h3>CATEGORÍAS</h3>
+        <h3>CATEGORÍAScccc</h3>
       </ion-col>
       <ion-col>
         <button expand="full" (click)="viewMoreCategories()">Ver Más</button>
@@ -18,11 +18,12 @@
     <ion-grid>
       <ion-row>
         <ion-col *ngFor="let categoria of categorias">      
-          <!-- <img [src]="getImageUrl(product.image)" alt="{{ categoria.name }}" style="width: 72px; height: auto;" /> -->
-          <button [routerLink]="['/detalle-producto', categoria.id]">{{ categoria.name }}</button>
+          <img [src]="categoria.foto" alt="{{ categoria.nombre }}" style="width: 72px; height: auto;" /> 
+          <button [routerLink]="['/detalle-producto', categoria.id]">
+            {{ categoria.nombre }}
+          </button>
         </ion-col>
       </ion-row>
     </ion-grid>
   </div>
-
 </div>

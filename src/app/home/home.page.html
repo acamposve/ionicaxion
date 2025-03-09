@@ -33,20 +33,29 @@
   <!-- end TEXT WELCOME -->
 
   <!-- CATEGORIES -->
-  <app-categories></app-categories>
+  <div class="">
+    <div class="featured-img" *ngFor="let categoria of categorias">
+      <img [src]="categoria.foto" alt="{{ categoria.nombre }}" style="width: 279px; height: 180px;" />
+
+    </div>
+  
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <h3>CATEGORÍAScccc</h3>
+        </ion-col>
+        <ion-col>
+          <button expand="full" (click)="viewMoreCategories()">Ver Más</button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  
+  
+    
+  </div>
   <!-- endCATEGORIES -->
 
-  <div class="featured-bottom">
-    <h3>Destacados</h3>
-    <div class="row">
-      <div class="col" *ngFor="let featured of featuredProducts">
-        <img [src]="featured.imageUrl" alt="{{ featured.name }}" />
-        <h4>{{ featured.name }}</h4>
-        <p class="details">{{ featured.details }} Breve descripción...</p>
-        <p class="price">{{ featured.price }} $ 350</p>
-      </div>
-    </div>
-  </div>
+  <app-featured></app-featured>
 
   <div class="img_background">
     <img src="assets/background_home.png">

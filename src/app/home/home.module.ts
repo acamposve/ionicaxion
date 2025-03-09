@@ -8,6 +8,7 @@ import { HomePageRoutingModule } from './home-routing.module';
 
 import { GreetingComponent } from '../shared/greeting/greeting.component';
 import { CategoriesComponent } from '../shared/categories/categories.component';
+import { FeaturedComponent } from '../shared/featured/featured.component';
 
 
 
@@ -20,6 +21,6 @@ import { CategoriesComponent } from '../shared/categories/categories.component';
   ],
   declarations: [HomePage,
     GreetingComponent, 
-    CategoriesComponent]
+    CategoriesComponent, FeaturedComponent]
 })
 export class HomePageModule {}
